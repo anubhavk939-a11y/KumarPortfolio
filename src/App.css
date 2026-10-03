@@ -2292,3 +2292,22 @@ html,
 body {
   overflow-x: hidden;
 }
+.mobileMenuButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    color: #a394ff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

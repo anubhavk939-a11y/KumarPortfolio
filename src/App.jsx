@@ -354,45 +354,55 @@ useEffect(() => {
     <div className="portfolio">
 
       {/* NAVBAR */}
-      <nav className="navbar">
-        <div className="logo">KA<span>.</span></div>
+<nav className="navbar">
 
-        <div className="navLinks">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        <a
-  href="https://www.linkedin.com/in/kumar-anubhava/"
-  target="_blank"
-  rel="noreferrer"
->
-  LinkedIn ↗
-</a>
-        </div>
-      
-        <button
-  className="themeToggle"
-  onClick={() => {
-    document.body.classList.toggle("lightTheme");
+  <div className="logo">
+    KA<span>.</span>
+  </div>
 
-    localStorage.setItem(
-      "theme",
-      document.body.classList.contains("lightTheme")
-        ? "light"
-        : "dark"
-    );
-  }}
-  aria-label="Toggle theme"
->
-  ☼
-</button>
+  <div className="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a
+      href="https://www.linkedin.com/in/kumar-anubhava/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      LinkedIn ↗
+    </a>
+  </div>
 
-        <a href="#contact" className="navButton">
-          Let's Talk
-        </a>
-      </nav>
+  <button
+    className="mobileMenuButton"
+    aria-label="Open menu"
+  >
+    ☰
+  </button>
+
+  <button
+    className="themeToggle"
+    onClick={() => {
+      document.body.classList.toggle("lightTheme");
+      localStorage.setItem(
+        "theme",
+        document.body.classList.contains("lightTheme")
+          ? "light"
+          : "dark"
+      );
+    }}
+    aria-label="Toggle theme"
+  >
+    ☼
+  </button>
+
+  <a href="#contact" className="navButton">
+    Let's Talk
+  </a>
+
+</nav>
 
       {/* HERO */}
       <section id="home" className="hero">
