@@ -631,11 +631,18 @@ footer strong {
     align-items: center;
   }
 
-  .heroStats {
-    flex-direction: column;
-    gap: 22px;
-    margin-top: 50px;
-  }
+ .heroStats {
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+}
+.heroStats > div {
+  text-align: center;
+  width: 100%;
+}
 
   .aboutGrid,
   .skillsGrid,
