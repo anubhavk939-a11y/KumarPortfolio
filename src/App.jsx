@@ -3,6 +3,7 @@ import projecthubImg from './assets/projecthub.png'
 import './App.css'
 
 function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [githubProjects, setGithubProjects] = useState([]);
 
 useEffect(() => {
@@ -353,23 +354,24 @@ useEffect(() => {
   return (
     <div className="portfolio">
 
-      {/* NAVBAR */}
+     {/* NAVBAR */}
 <nav className="navbar">
 
   <div className="logo">
     KA<span>.</span>
   </div>
 
-  <div className="navLinks">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <div className={`navLinks ${mobileMenuOpen ? "mobileMenuOpen" : ""}`}>
+    <a href="#home" onClick={() => setMobileMenuOpen(false)}>Home</a>
+    <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+    <a href="#skills" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+    <a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a>
+    <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
     <a
       href="https://www.linkedin.com/in/kumar-anubhava/"
       target="_blank"
       rel="noreferrer"
+      onClick={() => setMobileMenuOpen(false)}
     >
       LinkedIn ↗
     </a>
@@ -377,9 +379,10 @@ useEffect(() => {
 
   <button
     className="mobileMenuButton"
-    aria-label="Open menu"
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    aria-label="Toggle mobile menu"
   >
-    ☰
+    {mobileMenuOpen ? "✕" : "☰"}
   </button>
 
   <button
