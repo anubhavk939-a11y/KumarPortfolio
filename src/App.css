@@ -2130,6 +2130,9 @@ body.lightTheme .certStatus {
   margin: 10px auto 0;
   padding: 14px 16px;
   z-index: 1000;
+  background: rgba(10, 10, 16, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
   .navLinks {
