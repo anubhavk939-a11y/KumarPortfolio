@@ -275,6 +275,80 @@ useEffect(() => {
 
   return () => observer.disconnect();
 }, []);
+useEffect(() => {
+  const learningCards = document.querySelectorAll(".learningReveal");
+
+  if (!learningCards.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("showLearning");
+        } else {
+          entry.target.classList.remove("showLearning");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  learningCards.forEach((card) => observer.observe(card));
+
+  return () => observer.disconnect();
+}, []);
+useEffect(() => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("lightTheme");
+  }
+}, []);
+useEffect(() => {
+  const handleKeyDown = (event) => {
+    if (event.key.toLowerCase() === "k") {
+      document.body.classList.add("developerMode");
+
+      setTimeout(() => {
+        document.body.classList.remove("developerMode");
+      }, 1200);
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, []);
+useEffect(() => {
+  const certifications = document.querySelectorAll(
+    ".certificationReveal"
+  );
+
+  if (!certifications.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("showCertification");
+        } else {
+          entry.target.classList.remove("showCertification");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  certifications.forEach((card) => observer.observe(card));
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <div className="portfolio">
@@ -289,7 +363,31 @@ useEffect(() => {
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
+        <a
+  href="https://www.linkedin.com/in/kumar-anubhava/"
+  target="_blank"
+  rel="noreferrer"
+>
+  LinkedIn ↗
+</a>
         </div>
+      
+        <button
+  className="themeToggle"
+  onClick={() => {
+    document.body.classList.toggle("lightTheme");
+
+    localStorage.setItem(
+      "theme",
+      document.body.classList.contains("lightTheme")
+        ? "light"
+        : "dark"
+    );
+  }}
+  aria-label="Toggle theme"
+>
+  ☼
+</button>
 
         <a href="#contact" className="navButton">
           Let's Talk
@@ -506,10 +604,152 @@ useEffect(() => {
     </div>
   </div>
 </section>
+{/* CURRENTLY LEARNING */}
+<section className="section learningSection">
+  <p className="sectionLabel">03 — CURRENTLY LEARNING</p>
+
+  <div className="learningIntro">
+    <h2>
+      Always <span>learning.</span>
+    </h2>
+
+    <p>
+      Technologies and concepts I'm currently exploring,
+      practicing and building with.
+    </p>
+  </div>
+
+  <div className="learningGrid">
+    <div className="learningCard learningReveal">
+      <span>01</span>
+      <h3>Python</h3>
+      <p>Building projects and strengthening my programming skills.</p>
+      <small>BUILDING</small>
+    </div>
+
+  <div className="learningCard learningReveal">
+      <span>02</span>
+      <h3>Java</h3>
+      <p>Developing object-oriented programming and problem-solving skills.</p>
+      <small>LEARNING</small>
+    </div>
+
+  <div className="learningCard learningReveal">
+      <span>03</span>
+      <h3>HTML</h3>
+      <p>Creating structured and responsive web interfaces.</p>
+      <small>BUILDING</small>
+    </div>
+
+    <div className="learningCard learningReveal">
+      <span>04</span>
+      <h3>AI & ML</h3>
+      <p>Exploring machine learning concepts and intelligent applications.</p>
+      <small>EXPLORING</small>
+    </div>
+
+    <div className="learningCard learningReveal">
+      <span>05</span>
+      <h3>Full Stack Development</h3>
+      <p>Building complete applications across frontend and backend.</p>
+      <small>BUILDING</small>
+    </div>
+
+    <div className="learningCard learningReveal">
+      <span>06</span>
+      <h3>Data Science</h3>
+      <p>Learning data analysis, statistics and practical data workflows.</p>
+      <small>EXPLORING</small>
+    </div>
+
+    <div className="learningCard learningReveal">
+      <span>07</span>
+      <h3>Data Structures</h3>
+      <p>Strengthening algorithms, problem-solving and core DSA concepts.</p>
+      <small>LEARNING</small>
+    </div>
+  </div>
+</section>
+{/* CERTIFICATIONS */}
+<section id="certifications" className="section certificationsSection">
+  <p className="sectionLabel">04 — CERTIFICATIONS</p>
+
+  <div className="certificationsIntro">
+    <h2>
+      Learning I've <span>completed.</span>
+    </h2>
+
+    <p>
+      Certifications and workshops that have contributed to my
+      learning journey in AI, Python and technology.
+    </p>
+  </div>
+
+  <div className="certificationsGrid">
+
+    <article className="certificationCard certificationReveal">
+      <span className="certNumber">01</span>
+
+      <div className="certContent">
+        <h3>AI Foundation Course</h3>
+        <p>AI Classroom · Powered by JioPC · Designed by Jio Institute</p>
+      </div>
+
+      <span className="certStatus">COMPLETED</span>
+    </article>
+
+    <article className="certificationCard certificationReveal">
+      <span className="certNumber">02</span>
+
+      <div className="certContent">
+        <h3>Introduction to Artificial Intelligence</h3>
+        <p>Simplilearn SkillUp · 6 June 2026</p>
+      </div>
+
+      <span className="certStatus">COMPLETED</span>
+    </article>
+
+    <article className="certificationCard certificationReveal">
+      <span className="certNumber">03</span>
+
+      <div className="certContent">
+        <h3>Generative AI Workshop</h3>
+        <p>GrowthSchool</p>
+      </div>
+
+      <span className="certStatus">COMPLETED</span>
+    </article>
+
+    <article className="certificationCard certificationReveal">
+      <span className="certNumber">04</span>
+
+      <div className="certContent">
+        <h3>Python Course for Beginners</h3>
+        <p>Scaler Topics · Mastering the Essentials of Python</p>
+      </div>
+
+      <span className="certStatus">COMPLETED</span>
+    </article>
+    <article className="certificationCard certificationReveal">
+  <span className="certNumber">05</span>
+
+  <div className="certContent">
+    <h3>Agentic AI Boot Camp</h3>
+    <p>
+      KLGUG · KL University · 24-hour intensive AI boot camp ·
+      21–22 February 2026
+    </p>
+  </div>
+
+  <span className="certStatus">PARTICIPATED</span>
+</article>
+
+  </div>
+</section>
 
       {/* PROJECTS */}
       <section id="projects" className="section projectsSection">
-        <p className="sectionLabel">03 — PROJECTS</p>
+        <p className="sectionLabel">05 — PROJECTS</p>
 
         <div className="sectionHeadingRow">
           <h2>
@@ -622,7 +862,7 @@ useEffect(() => {
 
       {/* CONTACT */}
 <section id="contact" className="contactSection">
-  <p className="sectionLabel">04 — CONTACT</p>
+  <p className="sectionLabel">06 — CONTACT</p>
 
   <h2
      className="contactTitle">
@@ -653,13 +893,13 @@ useEffect(() => {
     </a>
 
     <a
-      href="https://www.linkedin.com"
-      target="_blank"
-      rel="noreferrer"
-      className="contactLink"
-    >
-      LinkedIn ↗
-    </a>
+  href="https://www.linkedin.com/in/kumar-anubhava/"
+  target="_blank"
+  rel="noreferrer"
+  className="contactLink"
+>
+  LinkedIn ↗
+</a>
     <a
   href="https://www.instagram.com/k.anubhavv/"
   target="_blank"
