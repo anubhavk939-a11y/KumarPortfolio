@@ -2126,10 +2126,11 @@ body.lightTheme .certStatus {
   }
 
   .navbar {
-    width: calc(100% - 20px);
-    margin: 10px auto 0;
-    padding: 14px 16px;
-  }
+  width: calc(100% - 20px);
+  margin: 10px auto 0;
+  padding: 14px 16px;
+  z-index: 1000;
+}
 
   .navLinks {
     display: flex;
@@ -2161,20 +2162,24 @@ body.lightTheme .certStatus {
   }
 
   .hero {
-    min-height: auto;
-    padding: 150px 0 90px;
-    text-align: left;
-    overflow: hidden;
-  }
+  min-height: auto;
+  padding: 150px 0 90px;
+  text-align: left;
+  overflow: hidden;
+  width: 100%;
+}
 
   .hero h1 {
-    font-size: clamp(42px, 12vw, 64px);
-    line-height: 0.98;
-    letter-spacing: -2.5px;
-    max-width: 100%;
-    word-break: normal;
-    overflow-wrap: normal;
-  }
+  font-size: clamp(40px, 10vw, 58px);
+  line-height: 1;
+  letter-spacing: -2px;
+  max-width: 100%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
 
   .heroText {
     max-width: 100%;
@@ -2273,4 +2278,8 @@ body.lightTheme .certStatus {
   .footerRight {
     flex-wrap: wrap;
   }
+}
+html,
+body {
+  overflow-x: hidden;
 }
